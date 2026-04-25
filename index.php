@@ -1,4 +1,7 @@
-<?php include "config/db.php"; ?>
+<?php 
+date_default_timezone_set('Asia/Kolkata');
+include "config/db.php"; 
+?>
 <?php include "includes/header.php"; ?>
 
 <div class="max-w-7xl mx-auto px-6 py-12">
@@ -25,7 +28,7 @@
     <!-- Notes Grid -->
     <div class="grid md:grid-cols-3 gap-6">
 <?php
-$stmt = $conn->prepare("SELECT * FROM notes WHERE visibility=? ORDER BY id DESC LIMIT 12");
+$stmt = $conn->prepare("SELECT * FROM notes WHERE visibility=? AND (expiry IS NULL OR expiry > NOW()) ORDER BY id DESC LIMIT 12");
 $vis = "public";
 $stmt->bind_param("s", $vis);
 $stmt->execute();
@@ -69,6 +72,7 @@ while ($row = $res->fetch_assoc()):
         <!-- Stats -->
         <div class="flex items-center justify-between text-xs text-gray-500 mb-4">
             <span><i class="fas fa-code"></i> <?= number_format($char_count) ?> chars</span>
+            <span><i class="fas fa-eye"></i> <?= $row['view_count'] ?> views</span>
             <?php if (!empty($row['password'])): ?>
                 <span class="text-yellow-400"><i class="fas fa-lock"></i> Protected</span>
             <?php endif; ?>

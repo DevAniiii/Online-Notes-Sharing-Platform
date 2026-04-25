@@ -1,4 +1,7 @@
-<?php session_start(); ?>
+<?php 
+session_start();
+date_default_timezone_set('Asia/Kolkata');
+?>
 <?php include "../includes/header.php"; ?>
 
 <div class="max-w-4xl mx-auto px-6 py-12">
@@ -58,6 +61,30 @@
                 <p class="text-xs text-gray-500 mt-2">Who can see this paste?</p>
             </div>
 
+            <!-- Language Selection -->
+            <div>
+                <label class="block text-sm font-semibold text-cyan-300 mb-2">
+                    <i class="fas fa-code"></i> Language
+                </label>
+                <select name="language"
+                    class="w-full p-3 rounded-lg bg-slate-900/50 border border-cyan-500/30 focus:border-cyan-400 text-white">
+                    <option value="plaintext">Plaintext</option>
+                    <option value="javascript">JavaScript</option>
+                    <option value="php">PHP</option>
+                    <option value="python">Python</option>
+                    <option value="java">Java</option>
+                    <option value="cpp">C++</option>
+                    <option value="csharp">C#</option>
+                    <option value="html">HTML</option>
+                    <option value="css">CSS</option>
+                    <option value="sql">SQL</option>
+                    <option value="bash">Bash</option>
+                    <option value="json">JSON</option>
+                    <option value="xml">XML</option>
+                </select>
+                <p class="text-xs text-gray-500 mt-2">Select syntax highlighting language</p>
+            </div>
+
             <!-- Password -->
             <div>
                 <label class="block text-sm font-semibold text-cyan-300 mb-2">
@@ -77,6 +104,7 @@
                 <select name="expiry"
                     class="w-full p-3 rounded-lg bg-slate-900/50 border border-cyan-500/30 focus:border-cyan-400 text-white">
                     <option value="never"><i class="fas fa-infinity"></i> Never</option>
+                    <option value="30sec"><i class="fas fa-stopwatch"></i> 30 Seconds (Testing)</option>
                     <option value="10min"><i class="fas fa-clock"></i> 10 Minutes</option>
                     <option value="1hour"><i class="fas fa-hourglass-half"></i> 1 Hour</option>
                     <option value="1day"><i class="fas fa-calendar-day"></i> 1 Day</option>

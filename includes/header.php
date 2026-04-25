@@ -114,6 +114,7 @@
             animation: slideInUp 0.4s ease;
         }
     </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
 </head>
 
 <body class="text-white min-h-screen flex flex-col">
